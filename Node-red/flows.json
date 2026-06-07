@@ -1,0 +1,674 @@
+[
+    {
+        "id": "c199fe95d3dc847b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b35d965a2fb6544d",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "40a4962da465c040",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "738c609995f2352f",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "b35d965a2fb6544d",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "40a4962da465c040",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "c2f5b834394fe1f7",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "738c609995f2352f",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ed4e1388bde1ddd4",
+        "type": "mqtt-broker",
+        "name": "Control",
+        "broker": "10.11.57.234",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "fe3a970efd35a825",
+        "type": "ui-page",
+        "name": "Page Name",
+        "ui": "b35d965a2fb6544d",
+        "path": "/page3",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "40a4962da465c040",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "29e57ed3b959f35d",
+        "type": "ui-group",
+        "name": "dieu_khien",
+        "page": "fe3a970efd35a825",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "df67df3c6fdbf0e5",
+        "type": "mqtt in",
+        "z": "c199fe95d3dc847b",
+        "name": "",
+        "topic": "uet/robot/telemetry",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "ed4e1388bde1ddd4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "758bc6b9fc5699ed",
+                "ece85134262586ca"
+            ]
+        ]
+    },
+    {
+        "id": "758bc6b9fc5699ed",
+        "type": "function",
+        "z": "c199fe95d3dc847b",
+        "name": "function 1",
+        "func": "// Trích xuất trực tiếp con số 2.4 từ biến error và ném cho Chart\nmsg.payload = msg.payload.error;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 40,
+        "wires": [
+            [
+                "2fe40cf2e48060eb"
+            ]
+        ]
+    },
+    {
+        "id": "2fe40cf2e48060eb",
+        "type": "ui-chart",
+        "z": "c199fe95d3dc847b",
+        "group": "c2f5b834394fe1f7",
+        "name": "",
+        "label": "chart_pid_stats",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "-10",
+        "ymax": "10",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 980,
+        "y": 60,
+        "wires": [
+            [
+                "ece85134262586ca"
+            ]
+        ]
+    },
+    {
+        "id": "573b77914f8fbc09",
+        "type": "mqtt out",
+        "z": "c199fe95d3dc847b",
+        "name": "",
+        "topic": "uet/robot/control",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed4e1388bde1ddd4",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c2a729e80bb8eb67",
+        "type": "ui-slider",
+        "z": "c199fe95d3dc847b",
+        "group": "c2f5b834394fe1f7",
+        "name": "",
+        "label": "He_so_ki",
+        "tooltip": "",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "ki",
+        "topicType": "str",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "300",
+        "step": "5",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "0b970dbb6c5b7c38"
+            ]
+        ]
+    },
+    {
+        "id": "67545e5950a117e7",
+        "type": "ui-slider",
+        "z": "c199fe95d3dc847b",
+        "group": "c2f5b834394fe1f7",
+        "name": "",
+        "label": "He_so_kd",
+        "tooltip": "",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "kd",
+        "topicType": "str",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "300",
+        "step": "5",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "0b970dbb6c5b7c38"
+            ]
+        ]
+    },
+    {
+        "id": "0b970dbb6c5b7c38",
+        "type": "function",
+        "z": "c199fe95d3dc847b",
+        "name": "function 2",
+        "func": "// 1. Lưu giá trị của thanh trượt vừa kéo vào bộ nhớ flow\nflow.set(msg.topic, msg.payload);\n\n// 2. Lấy tất cả giá trị ra (nếu chưa có thì lấy mặc định)\nlet val_kp = flow.get(\"kp\") || 0;\nlet val_ki = flow.get(\"ki\") || 0;\nlet val_kd = flow.get(\"kd\") || 0;\nlet val_base = flow.get(\"base\") || 300; // Tốc độ mặc định là 300\n\n// 3. Đóng gói thành Object JSON bao gồm cả Base\nlet outData = {\n    \"Kp\": val_kp,\n    \"Ki\": val_ki,\n    \"Kd\": val_kd,\n    \"Base\": val_base\n};\n\n// 4. Gửi dữ liệu đi qua MQTT\nmsg.topic = \"uet/robot/control\";\nmsg.payload = JSON.stringify(outData);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "573b77914f8fbc09",
+                "ece85134262586ca"
+            ]
+        ]
+    },
+    {
+        "id": "c66a2eb4934c83fd",
+        "type": "ui-slider",
+        "z": "c199fe95d3dc847b",
+        "group": "c2f5b834394fe1f7",
+        "name": "",
+        "label": "He_so_kp",
+        "tooltip": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "kp",
+        "topicType": "str",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "300",
+        "step": "5",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "0b970dbb6c5b7c38"
+            ]
+        ]
+    },
+    {
+        "id": "f254ed0800df2b5c",
+        "type": "mqtt out",
+        "z": "c199fe95d3dc847b",
+        "name": "dieu_khien_output",
+        "topic": "uet/robot/control",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed4e1388bde1ddd4",
+        "x": 1330,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ec9699c2928da4af",
+        "type": "ui-switch",
+        "z": "c199fe95d3dc847b",
+        "name": "on_off",
+        "label": "Auto/Manual",
+        "group": "29e57ed3b959f35d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "mode",
+        "topicType": "str",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "x": 1090,
+        "y": 820,
+        "wires": [
+            [
+                "881cde11fd3df033"
+            ]
+        ]
+    },
+    {
+        "id": "037b6a816f7cceec",
+        "type": "ui-text",
+        "z": "c199fe95d3dc847b",
+        "group": "29e57ed3b959f35d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Trạng thái xe",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1350,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "881cde11fd3df033",
+        "type": "function",
+        "z": "c199fe95d3dc847b",
+        "name": "function 5",
+        "func": "// 1. ĐỌC TRẠNG THÁI TỪ BỘ NHỚ (Ép kiểu Number để chống lỗi phím M)\nlet currentMode = Number(flow.get(\"robotMode\")) || 0;\nlet outData = {};\nlet displayStatus = \"\";\nlet buttonState = null;\nlet targetMode = currentMode;\nlet validCommand = false;\n\n// 2. PHÂN LOẠI TÍN HIỆU ĐẦU VÀO\n// --------------------------------------------------------\n// LUỒNG A: Tín hiệu từ CÔNG TẮC (Nhận diện qua topic \"mode\")\nif (msg.topic === \"mode\") {\n    // Chấp nhận cả định dạng số (1/0), boolean (true/false) hoặc chữ (\"1\"/\"0\")\n    targetMode = (msg.payload === true || msg.payload === 1 || msg.payload === \"1\") ? 1 : 0;\n    validCommand = true;\n}\n// --------------------------------------------------------\n// LUỒNG B: Tín hiệu từ DẢI NÚT BẤM (Nhận diện qua topic \"dir\")\nelse if (msg.topic === \"dir\") {\n    let val = String(msg.payload).toUpperCase();\n    if ([\"F\", \"B\", \"L\", \"R\", \"S\"].includes(val)) {\n        targetMode = 0; // Hễ bấm nút lái là ép xe về chế độ Manual\n        outData.dir = val;\n        buttonState = val; // Sáng nút tương ứng\n        validCommand = true;\n\n        if (val === \"F\") displayStatus = \"Tiến ⬆️\";\n        else if (val === \"B\") displayStatus = \"Lùi ⬇️\";\n        else if (val === \"L\") displayStatus = \"Trái ⬅️\";\n        else if (val === \"R\") displayStatus = \"Phải ➡️\";\n        else if (val === \"S\") displayStatus = \"DỪNG 🛑\";\n    }\n}\n// --------------------------------------------------------\n// LUỒNG C: Tín hiệu từ BÀN PHÍM WASD (Không có topic)\nelse {\n    let k = \"\";\n    // Bắt dính phím dù Node-RED gửi dưới dạng Object hay String\n    if (typeof msg.payload === \"object\" && msg.payload.key) {\n        k = String(msg.payload.key).toUpperCase();\n    } else if (typeof msg.payload === \"string\") {\n        k = msg.payload.toUpperCase();\n    }\n\n    if (k === 'M') {\n        targetMode = (currentMode === 0) ? 1 : 0; // Phím M: Đảo chế độ\n        validCommand = true;\n    }\n    else if ([\"W\", \"S\", \"A\", \"D\", \"X\"].includes(k)) {\n        targetMode = 0; // Hễ gõ phím lái là ép xe về chế độ Manual\n        validCommand = true;\n        if (k === 'W') { outData.dir = \"F\"; displayStatus = \"Tiến (Phím) ⬆️\"; buttonState = \"F\"; }\n        else if (k === 'S') { outData.dir = \"B\"; displayStatus = \"Lùi (Phím) ⬇️\"; buttonState = \"B\"; }\n        else if (k === 'A') { outData.dir = \"L\"; displayStatus = \"Trái (Phím) ⬅️\"; buttonState = \"L\"; }\n        else if (k === 'D') { outData.dir = \"R\"; displayStatus = \"Phải (Phím) ➡️\"; buttonState = \"R\"; }\n        else if (k === 'X') { outData.dir = \"S\"; displayStatus = \"DỪNG KHẨN CẤP 🛑\"; buttonState = \"S\"; } // Dùng phím X để phanh\n    }\n}\n\n// 3. LỌC NHIỄU\n// Nếu nhận được tín hiệu rác (ví dụ chuột lướt qua màn hình), hủy lệnh ngay lập tức\nif (!validCommand) return null;\n\n// 4. ĐÓNG GÓI VÀ LƯU TRỮ TRẠNG THÁI MỚI\ncurrentMode = targetMode;\nflow.set(\"robotMode\", currentMode);\noutData.mode = currentMode;\n\n// Xử lý hiển thị chữ trên màn hình khi ở trạng thái chờ\nif (currentMode === 1 && !outData.dir) {\n    displayStatus = \"Đang chạy AUTO 🤖\";\n    buttonState = \"\"; // Tắt highlight các nút di chuyển\n} else if (currentMode === 0 && !displayStatus) {\n    displayStatus = \"Đang chờ lệnh 🕹️\";\n}\n\n// 5. XUẤT RA 4 CỔNG KẾT NỐI\nreturn [\n    { topic: \"uet/robot/control\", payload: JSON.stringify(outData) }, // Cổng 1: Ra MQTT bắn xuống xe\n    { payload: displayStatus },                                       // Cổng 2: Ra màn hình Text\n    { payload: buttonState },                                         // Cổng 3: Dội ngược về Button Group để sáng nút\n    { payload: currentMode }                                          // Cổng 4: Dội ngược về Switch để gạt công tắc\n];",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 480,
+        "wires": [
+            [
+                "f254ed0800df2b5c",
+                "ece85134262586ca"
+            ],
+            [
+                "037b6a816f7cceec"
+            ],
+            [
+                "bc6515a20e446962"
+            ],
+            [
+                "ec9699c2928da4af"
+            ]
+        ]
+    },
+    {
+        "id": "bc6515a20e446962",
+        "type": "ui-button-group",
+        "z": "c199fe95d3dc847b",
+        "name": "",
+        "group": "29e57ed3b959f35d",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "label": "dieu_khien_gui",
+        "className": "",
+        "rounded": false,
+        "useThemeColors": true,
+        "passthru": false,
+        "options": [
+            {
+                "label": "⬆️",
+                "icon": "",
+                "value": "F",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "⬇️",
+                "icon": "",
+                "value": "B",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "⬅️",
+                "icon": "",
+                "value": "L",
+                "valueType": "str",
+                "color": "#ff6666"
+            },
+            {
+                "label": "➡️",
+                "icon": "",
+                "value": "R",
+                "valueType": "str",
+                "color": "#009999"
+            },
+            {
+                "label": "🛑",
+                "icon": "",
+                "value": "S",
+                "valueType": "str",
+                "color": "#cccc00"
+            }
+        ],
+        "topic": "dir",
+        "topicType": "str",
+        "x": 760,
+        "y": 840,
+        "wires": [
+            [
+                "881cde11fd3df033"
+            ]
+        ]
+    },
+    {
+        "id": "a83751bbf2a999ef",
+        "type": "ui-template",
+        "z": "c199fe95d3dc847b",
+        "group": "29e57ed3b959f35d",
+        "page": "",
+        "ui": "",
+        "name": "Bắt phím WASD",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n    <span style=\"display:none\">Keyboard Listener</span>\n</template>\n\n<script>\nexport default {\n    mounted() {\n        // Bật camera giám sát bàn phím khi mở web\n        window.addEventListener('keydown', this.handleKeydown);\n    },\n    unmounted() {\n        // Tắt camera khi đóng web\n        window.removeEventListener('keydown', this.handleKeydown);\n    },\n    methods: {\n        handleKeydown(event) {\n            // Đóng gói phím vừa bấm và bắn thẳng về Node-RED\n            this.send({ payload: event.key }); \n        }\n    }\n}\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 400,
+        "y": 500,
+        "wires": [
+            [
+                "881cde11fd3df033"
+            ]
+        ]
+    },
+    {
+        "id": "ece85134262586ca",
+        "type": "debug",
+        "z": "c199fe95d3dc847b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7108a70368f711af",
+        "type": "ui-slider",
+        "z": "c199fe95d3dc847b",
+        "group": "c2f5b834394fe1f7",
+        "name": "",
+        "label": "base_speed",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "base",
+        "topicType": "str",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "1000",
+        "step": "10",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "0b970dbb6c5b7c38"
+            ]
+        ]
+    }
+]
